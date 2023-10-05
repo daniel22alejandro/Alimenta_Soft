@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { MaterialIcons } from '@expo/vector-icons';
-import Logo from './../assets/Logo.png';
+import Logo from './../assets/logo2.png';
+import { useFonts, Poppins_400Regular } from '@expo-google-fonts/poppins';
+import AppLoading from 'expo-app-loading';
 
 const Code = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -22,6 +24,15 @@ const Code = () => {
     }
   };
 
+  let [fontsLoaded] = useFonts({
+    Poppins_400Regular,
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
+
   return (
     <View style={styles.container}>
        <Image source={Logo} style={styles.logo} />
@@ -31,8 +42,7 @@ const Code = () => {
         <MaterialIcons name="arrow-back" size={24} color="#750404" />
       </TouchableOpacity>
 
-      {/* Título de la aplicación */}
-      <Text style={styles.Title}>ALIMENTAR SOFT</Text>
+
 
       {/* Título "Restablecer Contraseña" */}
       <Text style={styles.title}>Restablecer Contraseña</Text>
@@ -79,9 +89,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logo:{
-    width: 110,
-    height: 110,
-  },
+height:50,
+width: 250,
+    },
   backButton: {
     position: 'absolute',
     top: 20,
@@ -102,10 +112,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 20,
+    fontFamily: 'Poppins_400Regular',
   },
   infoText: {
     marginLeft: 10,
     fontSize: 16,
+    fontFamily: 'Poppins_400Regular',
   },
   input: {
     width: '80%',
@@ -115,6 +127,7 @@ const styles = StyleSheet.create({
     borderRadius: 80,
     marginBottom: 10,
     paddingLeft: 10,
+    fontFamily: 'Poppins_400Regular',
   },
   confirmButton: {
     width: '80%',
@@ -128,7 +141,7 @@ const styles = StyleSheet.create({
   confirmButtonText: {
     color: 'white',
     fontSize: 16,
-    fontWeight: 'bold',
+    fontFamily: 'Poppins_400Regular',
   },
 });
 

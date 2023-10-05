@@ -2,46 +2,52 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { MaterialIcons } from '@expo/vector-icons';
+import { useFonts, Poppins_400Regular } from '@expo-google-fonts/poppins';
+import AppLoading from 'expo-app-loading';
 
-import Logo from './../assets/Logo.png';
+import Logo from './../assets/logo2.png';
 
 const Password = () => {
   const [Password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const navigation = useNavigation();
 
+  let [fontsLoaded] = useFonts({
+    Poppins_400Regular,
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
   const handlePasswordReset = () => {
-    
     console.log(`Contraseña: ${Password}`);
     console.log(`Confirmar Contraseña: ${confirmPassword}`);
 
-    
     if (Password === confirmPassword) {
       alert('Restablecimiento exitoso');
       navigation.navigate('Home');
     } else {
       alert('Las contraseñas no coinciden');
-     
     }
   };
 
   return (
     <View style={styles.container}>
-      
+      <TouchableOpacity style={styles.backButton}>
+        <MaterialIcons name="arrow-back" size={24} color="#750404" />
+      </TouchableOpacity>
 
+      <Image source={Logo} style={styles.logo} />
 
-<TouchableOpacity style={styles.backButton}>
-  <MaterialIcons name="arrow-back" size={24} color="#750404" />
-</TouchableOpacity>
+      <Text style={styles.title}>Restablecer Contraseña</Text>
 
-<Image source={Logo} style={styles.logo} />
-<Text style={styles.Title}>ALIMENTAR SOFT</Text>
+      <View style={styles.infoContainer}>
+        <MaterialIcons name="info" size={24} color="#750404" />
+        <Text style={styles.infoText}>Introduce tu nueva contraseña</Text>
+      </View>
 
-
-<Text style={styles.title}>Restablecer Contraseña</Text>
-
-    
-      <Text style={styles.infoText}>Contraseña:</Text>
+      <Text style={styles.infoText}>Nueva contraseña:</Text>
       <TextInput
         placeholder="Nueva Contraseña"
         style={styles.input}
@@ -50,8 +56,7 @@ const Password = () => {
         onChangeText={text => setPassword(text)}
       />
 
-      
-      <Text style={styles.infoText}>Confirmar Contraseña:</Text>
+      <Text style={styles.infoText}>Introduce nuevamente tu nueva contraseña:</Text>
       <TextInput
         placeholder="Confirmar Contraseña"
         style={styles.input}
@@ -60,7 +65,6 @@ const Password = () => {
         onChangeText={text => setConfirmPassword(text)}
       />
 
-      
       <TouchableOpacity style={styles.confirmButton} onPress={handlePasswordReset}>
         <Text style={styles.confirmButtonText}>Confirmar</Text>
       </TouchableOpacity>
@@ -74,30 +78,34 @@ const styles = StyleSheet.create({
     top: 20,
     left: 20,
   },
-  logo:{
-    width: 130,
-    height: 130,
+  logo: {
+    height: 50,
+    width: 250,
   },
-  
-  Title: {
-    fontSize: 24,
-    fontWeight: 'bold',
+  infoContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
     marginBottom: 20,
-    color: '#750404',
+    fontFamily: 'Poppins_400Regular',
   },
-
+  infoText: {
+    fontFamily: 'Poppins_400Regular',
+    marginLeft: 10,
+    fontSize: 16,
+    textAlign:'left',
+  },
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
   },
   title: {
     fontSize: 20,
-    fontWeight: 'bold',
     marginBottom: 20,
+    fontFamily: 'Poppins_400Regular',
   },
   infoText: {
     marginBottom: 5,
+    fontFamily: 'Poppins_400Regular',
   },
   input: {
     width: '80%',
@@ -105,8 +113,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 80,
-    marginBottom: 10,
+    marginBottom: 20,
     paddingLeft: 10,
+    fontFamily: 'Poppins_400Regular',
+    textAlign: 'center',
   },
   confirmButton: {
     width: '80%',
@@ -120,7 +130,7 @@ const styles = StyleSheet.create({
   confirmButtonText: {
     color: 'white',
     fontSize: 16,
-    fontWeight: 'bold',
+    fontFamily: 'Poppins_400Regular',
   },
 });
 
