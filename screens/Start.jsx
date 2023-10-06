@@ -1,9 +1,13 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import MenuIcon from './../assets/menu.png'; 
 import UserIcon from './../assets/usuario.png'; 
 import BasketIcon from './../assets/mercado.png'; 
+
+<ImageBackground> 
+  
+</ImageBackground>
 
 const Start = () => {
   const navigation = useNavigation();
