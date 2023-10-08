@@ -1,13 +1,12 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image, ImageBackground } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import MenuIcon from './../assets/menu.png'; 
 import UserIcon from './../assets/usuario.png'; 
 import BasketIcon from './../assets/mercado.png'; 
+import { useFonts, Poppins_400Regular } from '@expo-google-fonts/poppins';
+import AppLoading from 'expo-app-loading';
 
-<ImageBackground> 
-  
-</ImageBackground>
 
 const Start = () => {
   const navigation = useNavigation();
@@ -23,6 +22,15 @@ const Start = () => {
   const goToListScreen = () => {
     navigation.navigate('List');
   };
+
+  let [fontsLoaded] = useFonts({
+    Poppins_400Regular,
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
 
   return (
     <View style={styles.container}>
@@ -68,7 +76,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontFamily: 'Poppins_400Regular',
     marginBottom: 20,
   },
   icon: {
@@ -87,12 +95,13 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontFamily: 'Poppins_400Regular',
   },
   description: {
     marginTop: 20,
     textAlign: 'center',
     paddingHorizontal: 20,
+    fontFamily: 'Poppins_400Regular',
   },
 });
 

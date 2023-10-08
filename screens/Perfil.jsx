@@ -1,17 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
-import UsuarioIcono from './../assets/usuario.png'; 
+import UsuarioIcono from './../assets/UserBlanco.png'; 
+import { useFonts, Poppins_400Regular } from '@expo-google-fonts/poppins';
+import * as SplashScreen from 'expo-splash-screen';
+import AppLoading from 'expo-app-loading';
 
 const Perfil = ({ navigation }) => {
+  useEffect(() => {
+    SplashScreen.preventAutoHideAsync();
+    SplashScreen.hideAsync().catch(() => {
+      
+    });
+  }, []);
+
+  let [fontsLoaded] = useFonts({
+    Poppins_400Regular,
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <Image source={require('./../assets/fondoMovil.png')} style={styles.backgroundImage} />
+      <View style={styles.overlay}>
+        <Image source={UsuarioIcono} style={styles.usuarioIcono} />
+        <View style={styles.header}>
+          <Text style={styles.titulo}>ALIMENTAR SOFT</Text>
+        </View>
 
-<Image source={UsuarioIcono} style={styles.usuarioIcono} />
-      <View style={styles.header}>
-        <Text style={styles.titulo}>ALIMENTAR SOFT</Text>
-      </View>
-
-      <View style={styles.infoContainer}>
+        <View style={styles.infoContainer}>
         <View style={styles.casilla}>
           <Text style={styles.tituloCasilla}>Nombre:</Text>
           <Text style={styles.valorCasilla}>Luisa María Sánchez Tovar</Text>
@@ -47,18 +66,37 @@ const Perfil = ({ navigation }) => {
       <TouchableOpacity style={styles.volverButton} onPress={() => navigation.navigate('Start')}>
         <Text style={styles.volverButtonText}>Volver</Text>
       </TouchableOpacity>
-
+        </View>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-
+  backgroundImage: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+    position: 'absolute',
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject, 
+    backgroundColor: 'rgba(0,0,0,0.3)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   container: {
-    flexGrow: 1,
-    padding: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+      flexGrow: 1,
+      padding: 5,
   },
 
+
+tituloCasilla:{
+  fontFamily: 'Poppins_400Regular',
+  color:'#fff',
+},
  
   header: {
     flexDirection: 'row',
@@ -75,11 +113,14 @@ const styles = StyleSheet.create({
   titulo: {
     fontSize: 24,
     textAlign:'center',
+    fontFamily: 'Poppins_400Regular',
+    color:'#fff',
   },
 
   infoContainer: {
     marginBottom: 20,
     textAlign:'center',
+    fontFamily: 'Poppins_400Regular',
   },
 
   casilla: {
@@ -94,11 +135,13 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 5,
     borderWidth: 0.5, 
-    borderColor: 'black',
+    borderColor: 'white',
     borderRadius: 40,
     textAlign: 'center',
-    width: '80%',
+    width: '120%',
     height: 30,
+    fontFamily: 'Poppins_400Regular',
+    backgroundColor: 'rgba(245,245,245,0.3)',
   },
 
   volverButton: {
@@ -112,10 +155,10 @@ const styles = StyleSheet.create({
 
   volverButtonText: {
     color: 'white',
-    fontWeight: 'bold',
     fontSize: 16,
     textAlign: 'center',
     alignItems:'center',
+    fontFamily: 'Poppins_400Regular',
   },
 });
 

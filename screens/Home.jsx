@@ -3,6 +3,8 @@ import { TextInput } from 'react-native';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native'; 
 import Logo from './../assets/Logo.png';
+import { useFonts, Poppins_400Regular } from '@expo-google-fonts/poppins';
+import AppLoading from 'expo-app-loading';
 
 const Home = () => {
   const navigation = useNavigation();
@@ -14,7 +16,13 @@ const Home = () => {
   const handleLoginPress = () => {
     navigation.navigate('Start');
   };
+  let [fontsLoaded] = useFonts({
+    Poppins_400Regular,
+  });
 
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
   return (
     <View style={styles.container}>
 
@@ -50,6 +58,7 @@ const styles = StyleSheet.create({
   forgotPassword: {
     textDecorationLine: 'underline',
     marginTop: 10,
+    fontFamily: 'Poppins_400Regular',
   },
   container: {
     flex: 1,
@@ -57,8 +66,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   tittle: {
+    fontFamily: 'Poppins_400Regular',
     fontSize: 24,
-    fontWeight: 'bold',
     marginBottom: 20,
     color: '#750404'
   },
@@ -69,8 +78,10 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderRadius: 80,
     marginBottom: 10,
-    paddingLeft: 10,
+    paddingLeft: 5,
     textDecorationLine: 'underline',
+    fontFamily: 'Poppins_400Regular',
+    textAlign:'center',
   },
   loginButton: {
     width: '60%',
@@ -84,7 +95,7 @@ const styles = StyleSheet.create({
   loginButtonText: {
     color: 'white',
     fontSize: 16,
-    fontWeight: 'bold',
+    fontFamily: 'Poppins_400Regular',
   },
   logo:{
     width: 130,

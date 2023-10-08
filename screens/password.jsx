@@ -5,7 +5,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useFonts, Poppins_400Regular } from '@expo-google-fonts/poppins';
 import AppLoading from 'expo-app-loading';
 
-import Logo from './../assets/logo2.png';
+import Logo from './../assets/LogoBlanco.png';
 
 const Password = () => {
   const [Password, setPassword] = useState('');
@@ -34,8 +34,10 @@ const Password = () => {
 
   return (
     <View style={styles.container}>
+      <Image source={require('./../assets/fondoMovil.png')} style={styles.backgroundImage} />
+      <View style={styles.overlay}>
       <TouchableOpacity style={styles.backButton}>
-        <MaterialIcons name="arrow-back" size={24} color="#750404" />
+        <MaterialIcons name="arrow-back" size={24} color="#fff" />
       </TouchableOpacity>
 
       <Image source={Logo} style={styles.logo} />
@@ -43,7 +45,7 @@ const Password = () => {
       <Text style={styles.title}>Restablecer Contraseña</Text>
 
       <View style={styles.infoContainer}>
-        <MaterialIcons name="info" size={24} color="#750404" />
+        <MaterialIcons name="info" size={24} color="#fff" />
         <Text style={styles.infoText}>Introduce tu nueva contraseña</Text>
       </View>
 
@@ -69,10 +71,25 @@ const Password = () => {
         <Text style={styles.confirmButtonText}>Confirmar</Text>
       </TouchableOpacity>
     </View>
+  </View>
   );
 };
 
 const styles = StyleSheet.create({
+  backgroundImage: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+    position: 'absolute',
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject, // Esto hace que el overlay ocupe toda la pantalla
+    backgroundColor: 'rgba(0,0,0,0.3)', // Fondo semitransparente
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
   backButton: {
     position: 'absolute',
     top: 20,
@@ -87,12 +104,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 20,
     fontFamily: 'Poppins_400Regular',
+    color: '#fff',
   },
   infoText: {
     fontFamily: 'Poppins_400Regular',
     marginLeft: 10,
     fontSize: 16,
     textAlign:'left',
+    color: '#fff',
   },
   container: {
     flex: 1,
@@ -102,29 +121,32 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 20,
     fontFamily: 'Poppins_400Regular',
+    color: '#fff',
   },
   infoText: {
     marginBottom: 5,
     fontFamily: 'Poppins_400Regular',
+    color: '#fff',
   },
   input: {
-    width: '80%',
+    width: '70%',
     height: 40,
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 80,
-    marginBottom: 20,
-    paddingLeft: 10,
+    marginBottom: 10,
+    paddingLeft: 5,
     fontFamily: 'Poppins_400Regular',
-    textAlign: 'center',
+    textAlign:'center',
+    backgroundColor: 'rgba(245,245,245,0.3)',
   },
   confirmButton: {
-    width: '80%',
-    height: 40,
+    width: '60%',
+    height: 50,
     backgroundColor: '#750404',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 80,
+    borderRadius: 40,
     marginTop: 10,
   },
   confirmButtonText: {
