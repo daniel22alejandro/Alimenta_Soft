@@ -6,6 +6,7 @@ import Logo from './../assets/Logo.png';
 import { useFonts, Poppins_400Regular } from '@expo-google-fonts/poppins';
 import AppLoading from 'expo-app-loading';
 
+
 const Home = () => {
   const navigation = useNavigation();
 
@@ -24,9 +25,12 @@ const Home = () => {
     return <AppLoading />;
   }
   return (
+    
     <View style={styles.container}>
 
+      <Image source={require('./../assets/fondoMovil.png')} style={styles.backgroundImage} /> 
       <Image source={Logo} style={styles.logo} />
+      
       <Text style={styles.tittle}>ALIMENTAR SOFT</Text>
 
 
@@ -100,6 +104,13 @@ const styles = StyleSheet.create({
   logo:{
     width: 130,
     height: 130,
+  },
+  backgroundImage: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+    position: 'absolute',
   },
 });
 
