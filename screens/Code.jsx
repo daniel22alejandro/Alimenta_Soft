@@ -3,8 +3,6 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'reac
 import { useNavigation } from '@react-navigation/native';
 import { MaterialIcons } from '@expo/vector-icons';
 import Logo from './../assets/LogoBlanco.png';
-import { useFonts, Poppins_400Regular } from '@expo-google-fonts/poppins';
-import AppLoading from 'expo-app-loading';
 
 const Code = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -20,14 +18,6 @@ const Code = () => {
       alert('Código de confirmación incorrecto. Por favor, inténtalo de nuevo.');
     }
   };
-
-  let [fontsLoaded] = useFonts({
-    Poppins_400Regular,
-  });
-
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
 
   return (
     <View style={styles.container}>
@@ -90,7 +80,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   overlay: {
-    ...StyleSheet.absoluteFillObject, // Esto hace que el overlay ocupe toda la pantalla
+    width: '100%',
+    height: '100%',
     backgroundColor: 'rgba(0,0,0,0.3)', // Fondo semitransparente
     justifyContent: 'center',
     alignItems: 'center',

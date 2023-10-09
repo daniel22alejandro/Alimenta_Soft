@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { useFonts, Poppins_400Regular } from '@expo-google-fonts/poppins';
-import AppLoading from 'expo-app-loading';
 
 import Logo from './../assets/LogoBlanco.png';
 
@@ -12,14 +10,7 @@ const Password = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const navigation = useNavigation();
 
-  let [fontsLoaded] = useFonts({
-    Poppins_400Regular,
-  });
-
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }
-
+  
   const handlePasswordReset = () => {
     console.log(`Contraseña: ${Password}`);
     console.log(`Confirmar Contraseña: ${confirmPassword}`);
@@ -84,8 +75,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   overlay: {
-    ...StyleSheet.absoluteFillObject, // Esto hace que el overlay ocupe toda la pantalla
-    backgroundColor: 'rgba(0,0,0,0.3)', // Fondo semitransparente
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(0,0,0,0.3)', 
     justifyContent: 'center',
     alignItems: 'center',
   },
