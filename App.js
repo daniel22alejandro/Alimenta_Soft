@@ -9,7 +9,10 @@ import Start from './screens/Start';
 import Perfil from './screens/Perfil';
 import Menu from './screens/Menu';
 import List from './screens/List';
-import Confirmacion from './screens/confirmacion';
+import Confirmacion from './screens/Confirmacion';
+import Finish from './screens/Finish';
+
+
 
 const Stack = createNativeStackNavigator();
 
@@ -25,7 +28,8 @@ export default function App() {
         <Stack.Screen name="Perfil" component={Perfil}/>
         <Stack.Screen name="Menu" component={Menu}/>
         <Stack.Screen name="List" component={List}/>
-        <Stack.Screen name="Confirmacion" component={Confirmacion} />
+        <Stack.Screen name="Confirmacion" component={Confirmacion}/>
+        <Stack.Screen  name="Finish" component={Finish}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

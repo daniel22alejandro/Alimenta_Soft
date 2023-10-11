@@ -37,7 +37,7 @@ const List = ({ navigation }) => {
       <View style={styles.searchContainer}>
         <TextInput
           style={styles.input}
-          placeholder="Buscar..."
+          placeholder="Buscar"
           onChangeText={text => setSearchText(text)}
           value={searchText}
         />
@@ -108,12 +108,14 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
+    width:20,
     height: 40,
     borderWidth: 1,
-    borderRadius: 5,
+    borderRadius: 80,
     borderColor: '#fff',
-    paddingHorizontal: 10,
+    paddingHorizontal:20,
     fontFamily: 'Poppins_400Regular',
+    color:'#fff',
   },
   itemContainer: {
     paddingVertical: 10,

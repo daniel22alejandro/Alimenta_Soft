@@ -5,7 +5,6 @@ import MenuIcon from './../assets/menu.png';
 import UserIcon from './../assets/UserBlanco.png'; 
 import BasketIcon from './../assets/mercado.png'; 
 
-
 const Start = () => {
   const navigation = useNavigation();
 
@@ -21,32 +20,32 @@ const Start = () => {
     navigation.navigate('List');
   };
 
-
   return (
     <View style={styles.container}>
-   <Image source={require('./../assets/fondoMovil.png')} style={styles.backgroundImage} />
-    <View style={styles.overlay}>
-      <TouchableOpacity onPress={goToMenuScreen} style={styles.menu}>
-        <Image source={MenuIcon} style={styles.icon} />
-      </TouchableOpacity>
+      <Image source={require('./../assets/fondoMovil.png')} style={styles.backgroundImage} />
+      <View style={styles.overlay}>
+        <TouchableOpacity onPress={goToMenuScreen} style={styles.menu}>
+          <Image source={MenuIcon} style={styles.icon} />
+        </TouchableOpacity>
 
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>ALIMENTAR SOFT</Text>
+        </View>
 
-      <Text style={styles.title}>ALIMENTAR SOFT</Text>
+        <TouchableOpacity onPress={goToProfileScreen} style={styles.usuario}>
+          <Image source={UserIcon} style={styles.icon} />
+        </TouchableOpacity>
 
-      <TouchableOpacity onPress={goToProfileScreen} style={styles.usuario}>
-        <Image source={UserIcon} style={styles.icon} />
-      </TouchableOpacity>
+        <View style={styles.middleContainer}>
+          <TouchableOpacity onPress={goToListScreen} style={styles.basketButton}>
+            <Text style={styles.buttonText}>Lista de mercado</Text>
+            <Image source={BasketIcon} style={styles.mercado} />
+          </TouchableOpacity>
 
-
-      <TouchableOpacity onPress={goToListScreen} style={styles.basketButton}>
-        <Text style={styles.buttonText}>Lista de mercado</Text>
-        <Image source={BasketIcon} style={styles.mercado} />
-      </TouchableOpacity>
-
-
-      <Text style={styles.description}>
-        En la lista de mercado encontrará cada alimento entregado para así confirmar su entrega.
-      </Text>
+          <Text style={styles.description}>
+            En la lista de mercado encontrará cada alimento entregado para así confirmar su entrega.
+          </Text>
+        </View>
       </View>
     </View>
   );
@@ -59,6 +58,10 @@ const styles = StyleSheet.create({
     height: '100%',
     resizeMode: 'cover',
     position: 'absolute',
+  },
+  icon: {
+    width: 30,
+    height: 30,
   },
   overlay: {
     width: '100%',
@@ -74,43 +77,57 @@ const styles = StyleSheet.create({
   },
   menu: {
     position: 'absolute',
+    top: 20,
     left: 20,
+    height: '90%',
   },
   usuario: {
     position: 'absolute',
+    top: 20,
     right: 20,
+    height: '90%',
+  },
+  titleContainer: {
+    position: 'absolute',
+    top: 20,
+    width: '100%',
+    alignItems: 'center',
   },
   title: {
     fontSize: 24,
     fontFamily: 'Poppins_400Regular',
-    marginBottom: 20,
-    color:'#fff',
+    color: '#fff',
   },
-  icon: {
-    width: 30,
-    height: 30,
+  middleContainer: {
+    alignItems: 'center',
+    marginTop: '25%',
   },
   basketButton: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: 'center',
-    marginTop: 20,
+    justifyContent: 'center',
+    borderColor: '#ccc',
+    borderRadius: 50,
+    borderWidth: 2, 
+    backgroundColor: 'rgba(245,245,245,0.3)',
+    padding: 20, 
   },
   mercado: {
-    width: 30,
-    height: 30,
+    width: 100,
+    height: 100,
     marginRight: 10,
   },
   buttonText: {
-    fontSize: 18,
+    fontSize: 25,
     fontFamily: 'Poppins_400Regular',
-    color:'#fff',
+    color: '#fff',
   },
   description: {
     marginTop: 20,
     textAlign: 'center',
     paddingHorizontal: 20,
     fontFamily: 'Poppins_400Regular',
-    color:'#fff',
+    color: '#fff',
   },
 });
 
